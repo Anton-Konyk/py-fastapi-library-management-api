@@ -8,3 +8,11 @@ class AuthorBase(BaseModel):
 
 class AuthorCreate(AuthorBase):
     pass
+
+
+class Author(AuthorBase):
+    id: int
+    books:  list[Book]
+
+    class Config:
+        orm_mode = True
