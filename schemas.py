@@ -13,6 +13,13 @@ class BookCreate(BookBase):
     author_id: int
 
 
+class Book(BookBase):
+    id: int
+    author_id: int
+
+    class Config:
+        orm_mode = True
+
 
 class AuthorBase(BaseModel):
     name: str
