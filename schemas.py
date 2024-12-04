@@ -1,4 +1,11 @@
+import datetime
+
 from pydantic import BaseModel
+class BookBase(BaseModel):
+    title: str
+    summary: str
+    publication_date: datetime.date
+
 
 
 class AuthorBase(BaseModel):
