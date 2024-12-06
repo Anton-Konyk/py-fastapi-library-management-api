@@ -25,7 +25,7 @@ def get_author_by_name(db: Session, name: str):
 def create_book(db: Session, book: schemas.BookCreate):
     db_book = models.DBBook(
         title=book.title,
-        summary=book.price,
+        summary=book.summary,
         publication_date=book.publication_date,
         author_id=book.author_id,
     )
