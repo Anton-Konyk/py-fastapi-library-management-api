@@ -22,7 +22,7 @@ async def root():
     return {"message": "Hello, World!"}
 
 
-@app.post("/author/", response_model=schemas.Author)
+@app.post("/authors/", response_model=schemas.Author)
 def create_author(
     author: schemas.AuthorCreate,
     db: Session = Depends(get_db),
@@ -38,7 +38,7 @@ def create_author(
     return crud.create_author(db=db, author=author)
 
 
-@app.post("/book/", response_model=schemas.Book)
+@app.post("/books/", response_model=schemas.Book)
 def create_book(
         book: schemas.BookCreate,
         db: Session = Depends(get_db)
