@@ -36,3 +36,11 @@ def create_author(
         )
 
     return crud.create_author(db=db, author=author)
+
+
+@app.post("/book/", response_model=schemas.Book)
+def create_book(
+        book: schemas.BookCreate,
+        db: Session = Depends(get_db)
+):
+    return crud.create_book(db=db, book=book)
