@@ -7,13 +7,19 @@ from db import models
 def create_author(db: Session, author: schemas.AuthorCreate):
     db_author = models.DBAuthor(
         name=author.name,
-        description=author.bio,
+        bio=author.bio,
     )
     db.add(db_author)
     db.commit()
     db.refresh(db_author)
 
     return db_author
+
+
+def get_author_by_name(db: Session, name: str):
+    return (
+        db.query(models.DBAuthor).filter(models.DBAuthor.name == name).first()
+    )
 
 
 def create_book(db: Session, book: schemas.BookCreate):
