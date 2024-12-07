@@ -53,6 +53,6 @@ def create_book(
     return crud.create_book(db=db, book=book)
 
 
-@app.get("/authors/", response_model=List[schemas.Author])
-def list_authors(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
-    return crud.get_authors(db, skip=skip, limit=limit)
+@app.get("/books/", response_model=List[schemas.Book])
+def list_books(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
+    return crud.get_books(db, skip=skip, limit=limit)
