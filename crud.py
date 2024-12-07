@@ -26,6 +26,13 @@ def get_authors(db: Session, skip: int = 0, limit: int = 10):
     return db.query(models.DBAuthor).offset(skip).limit(limit).all()
 
 
+def get_author(db: Session, author_id: int):
+    return (
+        db.query(models.DBAuthor).filter(models.DBAuthor.id ==
+                                         author_id).first()
+    )
+
+
 def create_book(db: Session, book: schemas.BookCreate):
     db_book = models.DBBook(
         title=book.title,
