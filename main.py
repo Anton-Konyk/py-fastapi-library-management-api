@@ -64,5 +64,14 @@ def create_book(
 
 
 @app.get("/books/", response_model=List[schemas.Book])
-def list_books(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
-    return crud.get_books(db, skip=skip, limit=limit)
+def list_books(
+        author_id: int | None = None,
+        skip: int = 0,
+        limit: int = 10,
+        db: Session = Depends(get_db)
+):
+    db_book = crud.get_books(db, author_id=author_id, skip=skip, limit=limit)
+    if not db_book:
+        raise HTTPException(status_code=404, detail="Such Books not found")
+
+    return db_book
